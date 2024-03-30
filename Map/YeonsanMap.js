@@ -4,7 +4,7 @@ var mapContainer10 = document.getElementById('Yeonsan'),
     level: 3, // 지도의 확대 레벨
   };
 
-var map10 = new kakao.maps.Map(mapContainer9, mapOption9);
+var map10 = new kakao.maps.Map(mapContainer10, mapOption10);
 
 var markerPosition10 = new kakao.maps.LatLng(
   35.209481924828935,
