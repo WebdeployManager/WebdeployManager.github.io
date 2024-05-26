@@ -27,7 +27,7 @@
             region: $('input[name=region]').val()
         };
 
-        emailjs.sendForm('service_bghmyut','template_uij1s97',templateParams,'a9eFR5Rl3FuUc5Qvc')
+        emailjs.send('service_bghmyut','template_uij1s97',templateParams,'a9eFR5Rl3FuUc5Qvc')
         .then(function(result) {
             console.log('Success:', result.text);
         }, function(error) {
