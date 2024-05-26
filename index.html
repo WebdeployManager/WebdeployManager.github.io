@@ -17,22 +17,24 @@
     <link rel="apple-touch-icon" href="./images/favicon.ico"/>
 </head>
 <script>
-    $('#contactForm').submit(function(event){
-        event.preventDefault(); // 폼의 기본 제출 동작을 방지합니다.
-        alert('신청이 완료되었습니다. 방문해 주셔서 감사합니다.');
+    $(document).ready(function() {
+        $('#contactForm').submit(function(event) {
+            event.preventDefault();  // 폼의 기본 제출 동작을 방지합니다.
+            alert('신청이 완료되었습니다. 방문해 주셔서 감사합니다.');
 
-        var templateParams = {
-            name: $('input[name=name]').val(),
-            phone: $('input[name=phoneNum]').val(),
-            region: $('input[name=region]').val()
-        };
+            var templateParams = {
+                name: $('input[name=name]').val(),
+                phone: $('input[name=phoneNum]').val(),
+                region: $('input[name=region]').val()
+            };
 
-        emailjs.send('service_bghmyut','template_uij1s97',templateParams,'a9eFR5Rl3FuUc5Qvc')
-        .then(function(result) {
-            console.log('Success:', result.text);
-        }, function(error) {
-            console.error('Failed:', error.text);
-        });
+            emailjs.send('service_bghmyut','template_uij1s97',templateParams,'a9eFR5Rl3FuUc5Qvc')
+            .then(function(result) {
+                console.log('Success:', result.text);
+            }, function(error) {
+                console.error('Failed:', error.text);
+            });
+          });
     });
 
 
