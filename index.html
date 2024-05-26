@@ -15,6 +15,24 @@
     <link rel="icon" href="./images/favicon.ico"/>
     <link rel="apple-touch-icon" href="./images/favicon.ico"/>
 </head>
+<script>
+    $('input[name=submit]').click(function(){ 
+		alert('신청이 완료되었습니다. \n방문해 주셔서 감사합니다.');
+		// emailjs.sendForm('service_id','template_id',from.current,'public_key')
+        var templateParams = {	
+                name: $('input[name=name]').val(),
+                phone: $('input[name=phoneNum]').val(), 
+                email : $('input[name=region]').val()
+        };
+                    
+		emailjs.sendForm('service_bghmyut','template_uij1s97',templateParams,'a9eFR5Rl3FuUc5Qvc')
+			.then((result)=>{
+				console.log(result.text);
+		}, (error) => {
+			console.log(error.text);
+		});
+	});
+</script>
 <body>
     <div>
         <div class="container">
@@ -114,7 +132,7 @@
 					Address: 부산시 부산진구 중앙대로680번가길 74, 5층
 				</h3>
 			</div>
-			<form class="contact-form" ref={form} onSubmit={sendEmail}>
+			<form class="contact-form" onSubmit={sendEmail}>
 				<div class="contact-form">
 				<h2>빠른 가맹 문의</h2>
 					<div class="inputBox">
@@ -133,6 +151,7 @@
 					</div>
 					<div class="submit-area">
 						<input type="submit"
+                               name="submit"
 							   class="submit-btn"
 							   value="보내기"/>
 				</div>
