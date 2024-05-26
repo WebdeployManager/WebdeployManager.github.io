@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>홀덤포커스</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="title" content="홀덤포커스, 홀덤 프랜차이즈, 홀덤펍, 홀덤포커스 메인페이지,  | 홀덥펍 창업 홀덤포커스 | 홀덥펍 프랜차이즈 | 홀덥펍 | 홀덥펍 창업 | 프랜차이즈 창업 "/>
     <meta name="description" content="홀덤포커스 소개 페이지, 메인페이지"/>
     <meta name="keywords" contents="홀덤포커스, 홀덤 프랜차이즈, 홀덤펍 프랜차이즈, 게임카페 프랜차이즈, 홀덤포커스 프랜차이즈 특별한 오락공간, 매주 대회 개최, 다양한 음료와 음식, 이색 데이트 장소"/>
@@ -16,6 +17,25 @@
     <link rel="apple-touch-icon" href="./images/favicon.ico"/>
 </head>
 <script>
+    $('#contactForm').submit(function(event){
+        event.preventDefault(); // 폼의 기본 제출 동작을 방지합니다.
+        alert('신청이 완료되었습니다. 방문해 주셔서 감사합니다.');
+
+        var templateParams = {
+            name: $('input[name=name]').val(),
+            phone: $('input[name=phoneNum]').val(),
+            region: $('input[name=region]').val()
+        };
+
+        emailjs.sendForm('service_bghmyut','template_uij1s97',templateParams,'a9eFR5Rl3FuUc5Qvc')
+        .then(function(result) {
+            console.log('Success:', result.text);
+        }, function(error) {
+            console.error('Failed:', error.text);
+        });
+    });
+
+
     $('input[name=submit]').click(function(){ 
 		alert('신청이 완료되었습니다. \n방문해 주셔서 감사합니다.');
 		// emailjs.sendForm('service_id','template_id',from.current,'public_key')
@@ -132,7 +152,8 @@
 					Address: 부산시 부산진구 중앙대로680번가길 74, 5층
 				</h3>
 			</div>
-			<form class="contact-form" onSubmit={sendEmail}>
+
+			<form class="contact-form" id="contactForm">
 				<div class="contact-form">
 				<h2>빠른 가맹 문의</h2>
 					<div class="inputBox">
